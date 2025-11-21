@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор</title>
+    <style>
+        *{
+            font-family: 'Times New Roman', Times, serif;
+        }
+        body {
+            background-color: #edd5d8;
+            margin: 0;
+            padding: 20px;    
+        }
+        .calculator {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 15px;
+            background-color: #faf8f0;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .form-group1 {
+            margin-bottom: 20px;
+            width: 96%;
+        }
+        .form-group2 {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #d8abb7;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 10px;
+            border: none;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border-left: 4px solid #d8abb7;
+        }
+    </style>
+</head>
+<body>
+    <div class = "calculator">
+        <h2>Калькулятор стоимости заказа</h2>
+        <div class="form-group1">
+            <label for="count"> Количество товара</label>
+            <input type="number" id = "count" min = "1" value = "1">
+        </div>
+        <div class="form-group2">
+            <label for="product">Выберите товар</label>
+            <select id="product">
+                <option value="5000">Джинсы - 5000 руб.</option>
+                <option value="2000">Блузка - 2000 руб.</option>
+                <option value="10000">Куртка - 10000 руб.</option>
+            </select>
+        </div>
+        <button onclick = "calculate()">Рассчитать стоимость</button>
+        <div id = "result"></div>
+    </div>
+    <script>
+        function calculate() {
+            const count = parseInt(document.getElementById('count').value);
+            const productSelect = document.getElementById('product');
+            const price = parseInt(productSelect.value);
+            const productName = productSelect.options[productSelect.selectedIndex].text.split(' - ')[0];
+            if (count < 1) {
+                alert("Введите корректное количество товара")
+                return;
+            }
+            const total = price * count;
+             document.getElementById('result').innerHTML = `<strong>Итого: ${total} руб.</strong><br>${productName} × ${count} шт.`
+        }
+    </script>
+</body>
+</html>

@@ -80,7 +80,7 @@
                 <option value="10000">Куртка - 10000 руб.</option>
             </select>
         </div>
-        <button onclick = "calculate()">Рассчитать стоимость</button>
+        <button id = "calculateB">Рассчитать стоимость</button>
         <div id = "result"></div>
     </div>
     <script>
@@ -96,6 +96,7 @@
             const total = price * count;
              document.getElementById('result').innerHTML = `<strong>Итого: ${total} руб.</strong><br>${productName} × ${count} шт.`
         }
+        calculateB.addEventListener('click', calculate);
     </script>
 </body>
 </html>

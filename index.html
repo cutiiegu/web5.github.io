@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -84,19 +85,27 @@
         <div id = "result"></div>
     </div>
     <script>
+        const countInput = document.getElementById('count');
+        const productSelect = document.getElementById('product');
+        const calculateBtn = document.getElementById('calculateB');
+        const resultDiv = document.getElementById('result');
+
         function calculate() {
-            const count = parseInt(document.getElementById('count').value);
-            const productSelect = document.getElementById('product');
+            const count = parseInt(countInput.value);
             const price = parseInt(productSelect.value);
             const productName = productSelect.options[productSelect.selectedIndex].text.split(' - ')[0];
+            
             if (count < 1) {
-                alert("Введите корректное количество товара")
+                alert("Введите корректное количество товара");
                 return;
             }
+            
             const total = price * count;
-             document.getElementById('result').innerHTML = `<strong>Итого: ${total} руб.</strong><br>${productName} × ${count} шт.`
+            resultDiv.innerHTML = `<strong>Итого: ${total} руб.</strong><br>${productName} × ${count} шт.`;
         }
-        calculateB.addEventListener('click', calculate);
+
+        calculateBtn.addEventListener('click', calculate);
     </script>
 </body>
 </html>
+```

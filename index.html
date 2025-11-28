@@ -84,12 +84,11 @@
         <div id = "result"></div>
     </div>
     <script>
-        const countInput = document.getElementById('count');
-        const productSelect = document.getElementById('product');
-        const calculateBtn = document.getElementById('calculateB');
-        const resultDiv = document.getElementById('result');
-
         function calculate() {
+            const countInput = document.getElementById('count');
+            const productSelect = document.getElementById('product');
+            const resultDiv = document.getElementById('result');
+            
             const count = parseInt(countInput.value);
             const price = parseInt(productSelect.value);
             const productName = productSelect.options[productSelect.selectedIndex].text.split(' - ')[0];
@@ -103,7 +102,10 @@
             resultDiv.innerHTML = `<strong>Итого: ${total} руб.</strong><br>${productName} × ${count} шт.`;
         }
 
-        calculateBtn.addEventListener('click', calculate);
+        window.addEventListener('DOMContentLoaded', function () {
+            let button = document.getElementById("calculateB");
+            button.addEventListener("click", calculate);
+        });
     </script>
 </body>
 </html>
